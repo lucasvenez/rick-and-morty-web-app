@@ -12,3 +12,4 @@ def get_data_from_rick_and_morty_apis(database):
         character_json = {k: v for k, v in content_json.items() if k in dir(Character)}
 
         database.session.add(Character(**character_json))
+        database.session.commit()
