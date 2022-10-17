@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Personagens de Rick and Morty</title>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <th>
+        <td>ID</td>
+        <td>Nome</td>
+      </th>
+    </thead>
+    <tbody>
+      {% for character in characters %}
+        <tr>
+          <td>{{ character.id }}</td>
+          <td>{{ character.name }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+
+
+  </table>
+
+</body>
+</html>
