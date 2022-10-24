@@ -12,6 +12,9 @@ class ProductionConfig(Config):
 
 
 class DevelopmentConfig(Config):
+
+    SECRET_KEY = "memamame"
+
     TESTING = DEBUG = True
 
     DATABASE_URI = "sqlite:///:memory:"
