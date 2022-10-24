@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from model import *
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -38,7 +39,6 @@ def create_app():
 
     return application
 
-from model import *
 
 if __name__ == "__main__":
     application = create_app()

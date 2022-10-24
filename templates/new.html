@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rick and Morty Web App - new</title>
+</head>
+<body>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.id.label }} {{ form.id() }}
+        </div>
+        <div>
+            {{ form.id.label }} {{ form.name() }}
+        </div>
+
+        <input type="submit" value="Create"/>
+    </form>
+
+
+<footer>
+    <p>{{ now }}</p>
+</footer>
+
+</body>
+</html>

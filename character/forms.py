@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField
 from wtforms.validators import DataRequired
 
+<<<<<<< HEAD
 """
 id = db.Column(db.Integer, primary_key=True)
 name = db.Column(db.String(30), nullable=False)
@@ -19,3 +20,14 @@ class CharacterForm(FlaskForm):
     status = StringField("Status")
     species = StringField("Especie")
 
+=======
+
+class CharacterForm(FlaskForm):
+
+    id = IntegerField("Identificador", validators=[DataRequired])
+    name = StringField("Nome do Personagem")
+    created = StringField("Criado")
+    gender = StringField("Genero")
+    status = StringField("Status")
+    species = StringField("Especie")
+>>>>>>> sei la
