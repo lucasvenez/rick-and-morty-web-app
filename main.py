@@ -12,7 +12,7 @@ def create_app():
     from index.index import index_blueprint
     application.register_blueprint(index_blueprint)
 
-    from character.character import character_blueprint
+    from character.routes import character_blueprint
     application.register_blueprint(character_blueprint)
 
     db.init_app(application)
