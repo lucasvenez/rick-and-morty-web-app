@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<form method="POST" action="{{ url_for('login_blueprint.login') }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.email.label }} {{ form.email() }}
+    </div>
+    <div>
+        {{ form.password.label }} {{ form.password() }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+
+</body>
+</html>

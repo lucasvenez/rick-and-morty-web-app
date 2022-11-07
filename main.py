@@ -8,24 +8,7 @@ login_manager = LoginManager()
 
 @login_manager.user_loader
 def user_loader(user_id):
-
-    from model import User
-
-    users = {
-        "lucasvenez@gmail.com": User(
-            name="Lucas Venezian Povoa",
-            email="lucasvenez@gmail.com",
-            password="12345678",
-            birthdate="1990-02-01"
-        ),
-        "felipeleal81@gmail.com": User(
-            name="Felipe Leal",
-            email="felipeleal81@gmail.com",
-            password="654321",
-            birthdate="1997-12-01"
-        )
-    }
-
+    from model import users
     return users.get(user_id)
 
 
@@ -34,11 +17,14 @@ def create_app():
     application.config.from_object(
         "config.DevelopmentConfig")
 
-    from index.index import index_blueprint
+    from index.routes import index_blueprint
     application.register_blueprint(index_blueprint)
 
     from character.routes import character_blueprint
     application.register_blueprint(character_blueprint)
+
+    from login.routes import login_blueprint
+    application.register_blueprint(login_blueprint)
 
     db.init_app(application)
     login_manager.init_app(application)

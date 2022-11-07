@@ -21,7 +21,6 @@ class User(UserMixin):
 
 
 class Character(db.Model):
-
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(30), nullable=False)
@@ -34,3 +33,19 @@ class Character(db.Model):
     status = db.Column(db.String(5), nullable=True)
 
     species = db.Column(db.String(20), nullable=True)
+
+
+users = {
+    "lucasvenez@gmail.com": User(
+        name="Lucas Venezian Povoa",
+        email="lucasvenez@gmail.com",
+        password="12345678",
+        birthdate="1990-02-01"
+    ),
+    "felipeleal81@gmail.com": User(
+        name="Felipe Leal",
+        email="felipeleal81@gmail.com",
+        password="654321",
+        birthdate="1997-12-01"
+    )
+}
