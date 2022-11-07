@@ -19,6 +19,9 @@
 
     {% else %}
         <item>
+            <item><a href="{{ url_for('login_blueprint.register') }}">Cadastre-se</a></item>
+        </item>
+        <item>
             <a href="./login">Login</a>
         </item>
     {% endif %}

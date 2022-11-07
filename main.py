@@ -1,21 +1,15 @@
 from flask import Flask
-from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
-login_manager = LoginManager()
-
-
-@login_manager.user_loader
-def user_loader(user_id):
-    from model import users
-    return users.get(user_id)
 
 
 def create_app():
     application = Flask(__name__)
     application.config.from_object(
         "config.DevelopmentConfig")
+
+    db.init_app(application)
 
     from index.routes import index_blueprint
     application.register_blueprint(index_blueprint)
@@ -26,15 +20,27 @@ def create_app():
     from login.routes import login_blueprint
     application.register_blueprint(login_blueprint)
 
-    db.init_app(application)
+    from login import login_manager
     login_manager.init_app(application)
 
     if application.config["TESTING"]:
         with application.app_context():
             db.drop_all()
             db.create_all()
+
             from util.crawler import get_data_from_rick_and_morty_apis
             get_data_from_rick_and_morty_apis(db)
+
+            hash = hashlib.sha256()
+            hash.update("123456".encode())
+
+            db.session.add(User(
+                name="Lucas Venezian Povoa",
+                email="lucasvenez@gmail.com",
+                password=hash.hexdigest(),
+                birthdate="1990-02-01"
+            ))
+            db.session.commit()
 
     return application
 

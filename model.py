@@ -1,23 +1,24 @@
+import hashlib
+
 from flask_login import UserMixin
 
 from main import db
 from datetime import datetime
 
 
-class User(UserMixin):
-    name: str = None
-    email: str = None
-    password: str = None
-    birthdate: str = None
-
-    def __init__(self, name, email, password, birthdate):
-        self.name = name
-        self.email = email
-        self.password = password
-        self.birthdate = birthdate
+class User(db.Model, UserMixin):
+    name = db.Column(db.String(120), nullable=False)
+    email = db.Column(db.String(120), nullable=False, primary_key=True)
+    password = db.Column(db.String(64), nullable=False)
+    birthdate = db.Column(db.String(10), nullable=False)
 
     def get_id(self):
         return self.email
+
+    def verify_password(self, password):
+        hash = hashlib.sha256()
+        hash.update(str(password).encode())
+        return hash.hexdigest() == self.password
 
 
 class Character(db.Model):
@@ -25,27 +26,11 @@ class Character(db.Model):
 
     name = db.Column(db.String(30), nullable=False)
 
-    created = db.Column(db.String(15), nullable=False,
+    created = db.Column(db.String(25), nullable=False,
                         default=str(datetime.utcnow()))
 
-    gender = db.Column(db.String(5), nullable=True)
+    gender = db.Column(db.String(10), nullable=True)
 
-    status = db.Column(db.String(5), nullable=True)
+    status = db.Column(db.String(10), nullable=True)
 
     species = db.Column(db.String(20), nullable=True)
-
-
-users = {
-    "lucasvenez@gmail.com": User(
-        name="Lucas Venezian Povoa",
-        email="lucasvenez@gmail.com",
-        password="12345678",
-        birthdate="1990-02-01"
-    ),
-    "felipeleal81@gmail.com": User(
-        name="Felipe Leal",
-        email="felipeleal81@gmail.com",
-        password="654321",
-        birthdate="1997-12-01"
-    )
-}
