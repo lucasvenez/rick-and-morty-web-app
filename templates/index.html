@@ -15,7 +15,7 @@
         </item>
         <item>Locais</item>
         <item>Episódios</item>
-        <item><b>Logado como {{ current_user.name }}</b></item>
+        <item><a href="{{ url_for('login_blueprint.logout') }}">Logout</a></item>
 
     {% else %}
         <item>

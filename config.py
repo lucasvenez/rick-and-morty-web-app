@@ -21,3 +21,5 @@ class DevelopmentConfig(Config):
 
     SQLALCHEMY_DATABASE_URI = DATABASE_URI
 
+    SESSION_PROTECTION = "strong"
+
