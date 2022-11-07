@@ -7,21 +7,13 @@
 <body>
 
 <header>
-    <menu>
-    {% if current_user.is_authenticated %}
 
+    <menu>
         <item>
             <a href="./character/">Personagens</a>
         </item>
         <item>Locais</item>
         <item>Episódios</item>
-        <item><a href="{{ url_for('login_blueprint.logout') }}">Logout</a></item>
-
-    {% else %}
-        <item>
-            <a href="./login">Login</a>
-        </item>
-    {% endif %}
     </menu>
 
 </header>

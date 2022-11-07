@@ -24,7 +24,7 @@ class CharacterForm(FlaskForm):
 
 class CharacterForm(FlaskForm):
 
-    id = IntegerField("Identificador", validators=[DataRequired])
+    id = IntegerField("Identificador", validators=[DataRequired()])
     name = StringField("Nome do Personagem")
     created = StringField("Criado")
     gender = StringField("Genero")
