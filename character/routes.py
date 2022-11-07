@@ -4,6 +4,10 @@ from flask_login import login_required
 from character import character_blueprint
 from character.forms import CharacterForm
 
+=======
+from main import db
+
+
 from model import Character
 
 
@@ -20,6 +24,13 @@ def new_character():
     form = CharacterForm()
 
     if form.validate_on_submit():
+
         return "Personagem inserido com sucesso!"
+=======
+        character = Character(id=int(form.id.data), name=str(form.name.data))
+        db.session.add(character)
+        db.session.commit()
+        return "Personagem inserido com sucesso", 200
+
 
     return render_template("character/new.html", form=form)

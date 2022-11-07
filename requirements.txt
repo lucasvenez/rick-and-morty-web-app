@@ -1,7 +1,10 @@
 flask
+flask_login
 flask_sqlalchemy
+
 flask_login
 flask_wtf
 wtforms
+
 
 requests

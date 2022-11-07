@@ -8,13 +8,20 @@
 
 <header>
 
-    {
     <menu>
+    {% if current_user.is_authenticated %}
+
         <item>
             <a href="./character/">Personagens</a>
         </item>
         <item>Locais</item>
         <item>Episódios</item>
+
+    {% else %}
+        <item>
+            <a href="./login">Login</a>
+        </item>
+    {% endif %}
     </menu>
 
 </header>

@@ -7,19 +7,33 @@ login_manager = LoginManager()
 
 
 @login_manager.user_loader
-def load_user():
+def user_loader(user_id):
+
     from model import User
 
     users = {
+        "lucasvenez@gmail.com": User(
+            name="Lucas Venezian Povoa",
+            email="lucasvenez@gmail.com",
+            password="12345678",
+            birthdate="1990-02-01"
+        ),
         "magonegrodcd@gmail.com": User(
             name="Douglas Candido Domiciano",
             email="magonegrodcd@gmail.com",
             password="sla",
             birthdate="2001-05-31"
+        ),
+        "felipeleal81@gmail.com": User(
+            name="Felipe Leal",
+            email="felipeleal81@gmail.com",
+            password="654321",
+            birthdate="1997-12-01"
         )
     }
 
-    pass
+    return users.get(user_id)
+
 
 
 def create_app():
@@ -49,4 +63,6 @@ def create_app():
 from model import *
 
 if __name__ == "__main__":
-    create_app().run(host="0.0.0.0", port=5000)
+    application = create_app()
+    print(application.url_map)
+    application.run(host="0.0.0.0", port=5000)
