@@ -1,7 +1,14 @@
 from flask import Flask
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+
+
+@login_manager.user_loader
+def user_loader():
+    pass
 
 
 def create_app():
@@ -16,6 +23,7 @@ def create_app():
     application.register_blueprint(character_blueprint)
 
     db.init_app(application)
+    login_manager.init_app(application)
 
     if application.config["TESTING"]:
         with application.app_context():
@@ -29,4 +37,6 @@ def create_app():
 from model import *
 
 if __name__ == "__main__":
-    create_app().run(host="0.0.0.0", port=5000)
+    application = create_app()
+    print(application.url_map)
+    application.run(host="0.0.0.0", port=5000)
