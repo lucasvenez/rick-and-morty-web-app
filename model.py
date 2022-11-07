@@ -10,6 +10,12 @@ class User(UserMixin):
     password: str = None
     birthdate: str = None
 
+    def __init__(self, name, email, password, birthdate):
+        self.name = name
+        self.email = email
+        self.password = password
+        self.birthdate = birthdate
+
     def get_id(self):
         return self.email
 

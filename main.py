@@ -7,8 +7,20 @@ login_manager = LoginManager()
 
 
 @login_manager.user_loader
-def user_loader():
-    pass
+def user_loader(user_id):
+
+    from model import User
+
+    users = {
+        "lucasvenez@gmail.com": User(
+            name="Lucas Venezian Povoa",
+            email="lucasvenez@gmail.com",
+            password="12345678",
+            birthdate="1990-02-01"
+        )
+    }
+
+    return users.get(user_id)
 
 
 def create_app():
