@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField, SubmitField, StringField
+from wtforms import EmailField, PasswordField, SubmitField, StringField, DateField
 from wtforms.validators import DataRequired, EqualTo
 
 
@@ -14,7 +14,7 @@ class RegisterForm(FlaskForm):
     email = EmailField("E-mail", validators=[DataRequired()])
     password = PasswordField("Senha", validators=[
         DataRequired(),
-        EqualTo("confirm", message="Senhas devem ser compactíveis")])
+        EqualTo("confirm", message="Senhas devem ser compatíveis")])
     confirm = PasswordField("Confirmação")
-    birthdate = StringField("Data de aniversário", validators=[DataRequired()])
+    birthdate = DateField("Data de aniversário", validators=[DataRequired()], format=["%d/%m/%Y", "%Y-%m-%d"])
     submit = SubmitField("Cadastrar")

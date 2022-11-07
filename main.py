@@ -5,6 +5,8 @@ db = SQLAlchemy()
 
 
 def create_app():
+    import datetime
+
     application = Flask(__name__)
     application.config.from_object(
         "config.DevelopmentConfig")
@@ -31,14 +33,11 @@ def create_app():
             from util.crawler import get_data_from_rick_and_morty_apis
             get_data_from_rick_and_morty_apis(db)
 
-            hash = hashlib.sha256()
-            hash.update("123456".encode())
-
             db.session.add(User(
                 name="Lucas Venezian Povoa",
                 email="lucasvenez@gmail.com",
-                password=hash.hexdigest(),
-                birthdate="1990-02-01"
+                password="123456",
+                birthdate=datetime.date(year=1990, month=2, day=1)
             ))
             db.session.commit()
 

@@ -22,6 +22,13 @@
     </div>
     <div>
         {{ form.birthdate.label }} {{ form.birthdate() }}
+        {% if form.birthdate.errors %}
+            <ul class=errors>
+            {% for error in form.birthdate.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+  {% endif %}
     </div>
     <div>
         {{ form.submit() }}
