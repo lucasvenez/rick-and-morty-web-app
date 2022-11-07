@@ -17,6 +17,12 @@ def user_loader(user_id):
             email="lucasvenez@gmail.com",
             password="12345678",
             birthdate="1990-02-01"
+        ),
+        "felipeleal81@gmail.com": User(
+            name="Felipe Leal",
+            email="felipeleal81@gmail.com",
+            password="654321",
+            birthdate="1997-12-01"
         )
     }
 
